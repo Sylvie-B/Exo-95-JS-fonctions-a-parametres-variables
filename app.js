@@ -19,20 +19,36 @@ function add(...item){
             ref += idx;
         }
     }
-    return ref
+    return ref;
 }
 
-let display3 = document.createElement('div');
+function multi(...number){
+    let ref =0;
+    for (let idx of number){
+        if(Number.isInteger(idx)){
+            ref += parseInt(idx * 11.76);
+        }
+    }
+    return ref;
+}
 
-display3.innerHTML = add(1, 'intrus', 2, 3, 'ovni').toString();
-document.body.appendChild(display3);
+// point 2
+let display = document.createElement('div');
 
-let display4 = document.createElement('div');
+let point21 = add(1, 'intrus', 2, 3, 'ovni').toString();
+let point22 = add(1, 2, 3, 4, 5, 'ovni', 6).toString();
+let point23 = add(7, 8, 9).toString();
 
-display4.innerHTML = add(1, 2, 3, 4, 5, 'ovni', 6).toString();
-document.body.appendChild(display4);
+// point 3
+let point31 = multi(1, 'intrus', 2, 3, 'ovni').toString();
+let point32 = multi(1, 2, 3, 4, 5, 'ovni', 6).toString();
+let point33 = multi(7, 8, 9).toString();
 
-let display5 = document.createElement('div');
+recap(point21, point22, point23, point31, point32, point33);
 
-display5.innerHTML = add(7, 8, 9).toString();
-document.body.appendChild(display5);
+function recap(...item){
+    for(let idx in item){
+        display.innerHTML += item[idx] + '<br>';
+        document.body.appendChild(display);
+    }
+}
